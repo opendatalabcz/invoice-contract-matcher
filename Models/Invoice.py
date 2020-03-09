@@ -1,6 +1,4 @@
 from datetime import datetime
-from sqlalchemy import Column, String, Float, DateTime, Integer, Table, MetaData
-from sqlalchemy.orm import mapper, relationship
 
 class Invoice:
     """
@@ -8,10 +6,10 @@ class Invoice:
     dostupné a proto mají všechny nastaveny výchozí hodnotu na None.
     """
 
-    def __init__(self, invoice_id: int = None, ministry_ico: str = None, ministry_name: str = None, supplier_ico: str = None,
-                 supplier_name: str = None, amount: float = None, currency: str = None, purpose: str = None,
+    def __init__(self, invoice_id: int = None, ministry_ico: str = None, ministry_name: str = None, supplier_ico:
+                 str = None, supplier_name: str = None, amount: float = None, currency: str = None, purpose: str = None,
                  supplier_invoice_identifier: str = None, document_label: str = None, document_number: str = None,
-                 variable_symbol: str = None, date_acceptance: datetime = None, date_payment: datetime = str,
+                 variable_symbol: str = None, date_acceptance: datetime = None, date_payment: datetime = None,
                  date_due: datetime = None, date_issue: datetime = None, budget_item_code: str = None,
                  budget_item_name: str = None, contract_identifier: str = None, amount_per_item: float = None,
                  amount_without_tax: float = None, amount_in_diff_currency: float = None):

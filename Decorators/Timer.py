@@ -1,6 +1,7 @@
 from functools import wraps
 from time import time
 
+
 def timer(f):
     @wraps(f)
     def wrap(*args, **kw):

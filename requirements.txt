@@ -1,0 +1,5 @@
+psycopg2_binary==2.8.4
+mypy==0.761
+requests==2.23.0
+lxml==4.5.0
+tqdm==4.43.0

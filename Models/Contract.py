@@ -1,8 +1,4 @@
 from datetime import datetime
-from sqlalchemy import Column, String, Float, DateTime, Integer, Table, MetaData
-from sqlalchemy.orm import mapper, relationship
-
-from Models.ContractAttachment import ContractAttachment
 
 
 class Contract:
@@ -19,7 +15,8 @@ class Contract:
                  supplier_receiver_flag: str = None, purpose: str = None, date_agreed: datetime = None,
                  contract_number: str = None, approved: str = None, amount_without_dph: float = None,
                  amount_with_dph: float = None, amount_different_currency: float = None, currency: str = None,
-                 hash_value: str = None, link_pdf: str = None, attachments: list = None, valid: str = None, linked_record:str = None):
+                 hash_value: str = None, link_pdf: str = None, attachments: list = None, valid: str = None,
+                 linked_record:str = None):
         """
         Konstruktor smlouvy. Je navrhnut tak, aby do něj bylo možné uložit co nejvice dat.
         :param contract_id: Identifikátor smlouvy v databazi.
@@ -85,6 +82,7 @@ class Contract:
         self.linked_record = linked_record
 
     def __str__(self):
-        return f"Contract[{self.contract_id}]: m_name: {self.ministry_name}, m_ico: {self.ministry_ico}, s_name: {self.supplier_name}, " \
-               f"s_ico: {self.supplier_ico}, agreed: {self.date_agreed}, amount: {self.amount_with_dph}"
+        return f"Contract[{self.contract_id}]: m_name: {self.ministry_name}, m_ico: {self.ministry_ico}, " \
+               f"s_name: {self.supplier_name}, s_ico: {self.supplier_ico}, agreed: {self.date_agreed}, " \
+               f"amount: {self.amount_with_dph}"
 

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS contract;
+DROP TABLE IF EXISTS contract CASCADE;
 CREATE TABLE contract(
    contract_id serial PRIMARY KEY,
    external_id VARCHAR(50),
@@ -15,7 +15,7 @@ CREATE TABLE contract(
    supplier_date_box VARCHAR(7),
    supplier_ico VARCHAR(20),
    supplier_address VARCHAR(500),
-   supplier_department VARCHAR(200),
+   supplier_department VARCHAR(500),
    supplier_receiver_flag VARCHAR(5),
    purpose VARCHAR(1000),
    date_agreed TIMESTAMP without time zone,
@@ -31,7 +31,7 @@ CREATE TABLE contract(
    linked_record VARCHAR(250)
 );
 
-DROP TABLE IF EXISTS invoice;
+DROP TABLE IF EXISTS invoice CASCADE;
 CREATE TABLE invoice(
    invoice_id serial PRIMARY KEY,
    ministry_ico VARCHAR(20),
@@ -57,7 +57,7 @@ CREATE TABLE invoice(
    amount_in_diff_currency Float
 );
 
-DROP TABLE IF EXISTS contract_attachment;
+DROP TABLE IF EXISTS contract_attachment CASCADE;
 CREATE TABLE contract_attachment(
    contract_attachment_id serial PRIMARY KEY,
    contract_id Integer,
@@ -69,7 +69,7 @@ CREATE TABLE contract_attachment(
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-DROP TABLE IF EXISTS possible_relation;
+DROP TABLE IF EXISTS possible_relation CASCADE;
 CREATE TABLE possible_relation(
     possible_relation_id serial PRIMARY KEY,
     contract_id Integer,
@@ -84,12 +84,12 @@ CREATE TABLE possible_relation(
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-DROP TABLE IF EXISTS test_result;
+DROP TABLE IF EXISTS test_result CASCADE;
 CREATE TABLE test_result(
-    test_id serial PRIMARY KEY,
+    test_result_id serial PRIMARY KEY,
     possible_relation_id INTEGER,
     test_name VARCHAR(50),
-    test_result float,
+    result float,
     CONSTRAINT possible_relation_id_fkey FOREIGN KEY (possible_relation_id)
       REFERENCES possible_relation (possible_relation_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION

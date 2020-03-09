@@ -1,8 +1,3 @@
-from datetime import datetime
-from sqlalchemy import Column, String, Float, DateTime, Integer, Table, MetaData, ForeignKey
-from sqlalchemy.orm import mapper, relationship
-
-
 class ContractAttachment:
     """
     Třída reprezentující přílohu smlouvy.
@@ -17,4 +12,3 @@ class ContractAttachment:
         self.name = name
         self.hash_value = hash_value
         self.link = link
-

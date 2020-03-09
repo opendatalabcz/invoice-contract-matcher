@@ -1,11 +1,13 @@
 import psycopg2
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from Models.Invoice import Invoice
 from Configuration.Config import config
 
-class InoviceProviderOpenData:
-    @abstractmethod
-    def getInvoices(config_file:str, page: int, page_size:int) -> list:
+
+class InvoiceProviderOpenData:
+
+    @staticmethod
+    def get_invoices(config_file: str, page: int, page_size: int) -> list:
         row_start = (page_size * page) - page_size + 1
         row_end = page * page_size
 
@@ -76,8 +78,8 @@ class InoviceProviderOpenData:
             cur.close()
 
             for line in results:
-                print(line)
-                invoices.append(Invoice(*line))
+                # print(line)
+                invoices.append(Invoice(None, *line))
         except Exception as e:
             print(e)
         finally:
@@ -86,13 +88,13 @@ class InoviceProviderOpenData:
                 print('Database connection closed.')
         return invoices
 
-    @abstractmethod
+    @staticmethod
     def getAllInvoices(config_file: str):
         invoices = []
         conn = None
         try:
             params = config(config_file, "opendatadb")
-            print('Connecting to the database...')
+            # print('Connecting to the database...')
             conn = psycopg2.connect(**params)
             cur = conn.cursor()
             cur.execute("""
@@ -126,7 +128,7 @@ class InoviceProviderOpenData:
 
             results = cur.fetchall()
             for line in results:
-                print(line)
+                # print(line)
                 invoices.append(Invoice(*line))
             cur.close()
         except Exception as e:
@@ -134,5 +136,5 @@ class InoviceProviderOpenData:
         finally:
             if conn is not None:
                 conn.close()
-                print('Database connection closed.')
+                # print('Database connection closed.')
         return invoices
