@@ -1,10 +1,10 @@
-# Portá srovnávače faktur a smluv ministerstev České Republiky
+# Portál srovnávače faktur a smluv ministerstev České republiky
 
-Tato aplikace vznikla za účelem mapování faktur zveřejněných ministerstvi České Republiky na uzavřené smlouvy v Registru Smluv.
+Tato aplikace vznikla za účelem mapování faktur zveřejněných ministerstvy České Republiky na uzavřené smlouvy v Registru smluv.
 
-#Instalační příručka
+# Instalační příručka
 
-##Backend
+## Backend
 
 Je potřeba mít nainstalován Python 3
 Stažení: https://www.python.org/downloads/
@@ -18,7 +18,7 @@ Pokud máte více Python verzí nainstalováno, je možné specifikovat verzi po
         
         pip3 install -r requirements.txt
         
-###Naplnění databáze daty
+### Naplnění databáze daty
 
 V tomto projektu je při vývoji použita databáze PostgreSQL.
 
@@ -27,15 +27,15 @@ Instalace: https://www.postgresqltutorial.com/install-postgresql/
 
 Pro práci s databází je možné využít terminál: https://www.postgresql.org/docs/12/app-psql.html
 Nebo je zde možnost využítí nástroje pgAdmin: https://www.pgadmin.org/
-Nebo využít nástrojů ve vývojovém prostředí, například Pycharm: https://www.jetbrains.com/help/pycharm/relational-databases.html
+Nebo využít nástrojů ve vývojovém prostředí, například PyCharm: https://www.jetbrains.com/help/pycharm/relational-databases.html
 
 ### Konfigurační soubor
 Jako zdroj nastavení slouží soubor configuration.ini
 
 Soubor obsahuje 6 částí:
 
-- Flask
-    - Obsahuje nastavení frameworku flask
+- flask
+    - obsahuje nastavení frameworku flask
     - paramtery host a port určují, na jaké adrese bude REST API dostupné
     - pokud chcete, aby bylo možné se k API připojit ze sítě, nastavte host na adresu 0.0.0.0
 
@@ -47,21 +47,21 @@ Soubor obsahuje 6 částí:
     - obsahuje údaje potřebné k připojení k databázi, která slouží jako zdroj faktur
   
 - contract_provider
-    - slouží k specifikování parametrů pro třídu invoice provider
+    - slouží k specifikování parametrů pro třídu ContractProviderRegistr
 
 - deciding_pipeline
-    - slouží k specifikování parametrů pro třídu deciding pipeline
+    - slouží k specifikování parametrů pro třídu DecidingPipeline
 
-v souboru configuration.ini je potřeba nastavit sekce matcherdb a opendatadb
+V souboru configuration.ini je potřeba nastavit sekce matcherdb a opendatadb
 Matcherdb jsou údaje pro připojení k databázi, kam budou data uložena
 
 Při využití opendata databáze:
-- Opendatadb jsou údaje pro připojení k databázi, ze které se stáhnou faktury
-- Opendata databázi je možné naplnit daty pomocí aplikace OpendataLabu dostupné zde: https://github.com/opendatalabcz/opendata
+- ppendatadb jsou údaje pro připojení k databázi, ze které se stáhnou faktury
+- ppendata databázi je možné naplnit daty pomocí aplikace OpendataLabu dostupné zde: https://github.com/opendatalabcz/opendata
 
 Při využití smluv z Registru smluv:
-- Pro stažení smluv z Registru smluv není potřeba upravovat nic. 
-- Pouze zdrojovou adresu v sekci contract_provider, pokud se změnila.
+- pro stažení smluv z Registru smluv není potřeba upravovat nic
+- pouze zdrojovou adresu v sekci contract_provider, pokud se změnila
 
 Pokud chcete využít vlastní provider dat, je potřeba ho nastavit v souboru data_downloader.py
 
@@ -69,8 +69,7 @@ Pokud chcete využít vlastní provider dat, je potřeba ho nastavit v souboru d
 ### Spuštění
 
 Před spuštěním nahrávání dat je nutné vytvořit tabulky, do kterých jsou nahrány smlouvy a faktury.
-- Pro vytvoření tabulek v databázi a nahrání základních dat spusťte create script v ./Database/scripts/drop_create_tables.sql
-- 
+- pro vytvoření tabulek v databázi a nahrání základních dat spusťte create script v ./Database/scripts/drop_create_tables.sql
 
 ### Stažení dat
 Po nastavení potřebných údajů, je třeba spustit soubor data_downloader.py
@@ -83,7 +82,7 @@ Pro spuštění párování je spusťe main.py
         python main.py
 
 ### REST API
-Pokud jsou napárována, je možné spustit flask aplikaci, která vystaví REST API.
+Pokud jsou faktury namapovány na smlouvy, je možné spustit Flask aplikaci, která vystaví REST API.
 
 1) Nejdříve nastavíme proměnou FLASK_APP:
 
@@ -102,7 +101,7 @@ Pokud jsou napárována, je možné spustit flask aplikaci, která vystaví REST
    
         flask run --host 0.0.0.0
 
-##Frontend
+## Frontend
 
 Pro spuštění webového klienta je nutné nainstalovat Node.js
 https://nodejs.org/en/download/
@@ -111,14 +110,14 @@ https://nodejs.org/en/download/
 
         npm install
         
-2) Po nainstalování potřebných balíčků je možné spustit server pomocí přípazu
+2) po nainstalování potřebných balíčků je možné spustit server pomocí příkazu
         
         npm start
         
    Tento příkaz spustí server na adrese http://127.0.0.1:3000
    Na této adrese je také dostupná dokumentace k REST API, kde je možné spojení otestovat.
  
-3) Pro vytvotření produkční verze spusťe
+3) pro vytvotření produkční verze spusťe
 
         npm run-script build
         
