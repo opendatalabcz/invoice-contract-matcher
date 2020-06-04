@@ -1,0 +1,73 @@
+{
+  "name": "Matcher",
+  "version": "1.0.0",
+  "description": "Matcher pro párování faktur a smluv ministerstev České Republiky",
+  "private": false,
+  "main": "dist/index.js",
+  "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "4.2.1",
+    "@material-ui/pickers": "^3.2.10",
+    "chartist": "0.10.1",
+    "classnames": "2.2.6",
+    "history": "4.9.0",
+    "perfect-scrollbar": "1.4.0",
+    "prop-types": "15.7.2",
+    "react": "16.9.0",
+    "react-chartist": "0.13.3",
+    "react-dom": "16.9.0",
+    "react-hook-form": "^5.7.2",
+    "react-particles-js": "^3.0.3",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "^3.4.1",
+    "react-swipeable-views": "0.13.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
+    "build-package": "npm run build-package-css && babel src --out-dir dist",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendatalabcz/invoice-contract-matcher"
+  },
+  "keywords": [],
+  "author": "Matěj Adamec",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "optionalDependencies": {
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.10.2",
+    "typescript": "3.5.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-create-react-app": "^3.0.0",
+    "@storybook/react": "^5.3.19",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "prettier": "1.18.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": []
+  }
+}
