@@ -2,9 +2,9 @@
 
 Tato aplikace vznikla za účelem mapování faktur zveřejněných ministerstvi České Republiky na uzavřené smlouvy v Registru Smluv.
 
-#Instalační příručka
+# Instalační příručka
 
-##Backend
+## Backend
 
 Je potřeba mít nainstalován Python 3
 Stažení: https://www.python.org/downloads/
@@ -18,7 +18,7 @@ Pokud máte více Python verzí nainstalováno, je možné specifikovat verzi po
         
         pip3 install -r requirements.txt
         
-###Naplnění databáze daty
+### Naplnění databáze daty
 
 V tomto projektu je při vývoji použita databáze PostgreSQL.
 
@@ -102,7 +102,7 @@ Pokud jsou napárována, je možné spustit flask aplikaci, která vystaví REST
    
         flask run --host 0.0.0.0
 
-##Frontend
+## Frontend
 
 Pro spuštění webového klienta je nutné nainstalovat Node.js
 https://nodejs.org/en/download/
